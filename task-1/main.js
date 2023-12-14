@@ -29,7 +29,51 @@ const EditableContent = () => {
   
         // Post the edited data to the API
         await fetch(`https://practice-data.onrender.com/usersData/${id}`, {
-          method: 'PUT',
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ [field]: value }),
+        });
+      } catch (error) {
+        console.error('Error posting data:', error);
+      }
+    };
+
+    const handleEdit1 = async (id, field, value) => {
+      try {
+        // Update the local state immediately for a responsive UI
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.id === id ? { ...item, [field]: value } : item
+          )
+        );
+  
+        // Post the edited data to the API
+        await fetch(`https://practice-data.onrender.com/usersData/${id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ [field]: value }),
+        });
+      } catch (error) {
+        console.error('Error posting data:', error);
+      }
+    };
+
+     const handleEdit2 = async (id, field, value) => {
+      try {
+        // Update the local state immediately for a responsive UI
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.id === id ? { ...item, [field]: value } : item
+          )
+        );
+  
+        // Post the edited data to the API
+        await fetch(`https://practice-data.onrender.com/usersData/${id}`, {
+          method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -60,6 +104,14 @@ const EditableContent = () => {
                 >
                   {item.title}
                 </td>
+                <td style={{width:"200px"}} 
+                 contentEditable
+                 onBlur={(e) => handleEdit1(item.id, 'space', e.target.textContent)}
+                >{item.space}</td>
+                <td style={{width:"200px"}} 
+                 contentEditable
+                 onBlur={(e) => handleEdit2(item.id, 'space1', e.target.textContent)}
+                >{item.space1}</td>
               </tr>
             ))}
           </tbody>
