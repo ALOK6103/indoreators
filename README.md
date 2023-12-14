@@ -12,6 +12,8 @@ Assignment Description
 <li>Frontend(new-app) contains Notes application</li>
 <li>For CRUD operation MongoDB is used as backend database</li>
 
+Deployed link of Task-2- https://indoreators-mu.vercel.app/
+
 <h1>Task-3</h1>
 
 <li>Task-3 contain two files index.html and main.js.</li>
